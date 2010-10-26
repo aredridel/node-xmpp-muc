@@ -1,7 +1,7 @@
 { "name": "xmpp-muc"
 ,"version": "0.0.0"
 ,"main": "./lib/xmpp-muc"
-,"description": "XMPP MUC handler
+,"description": "XMPP MUC handler"
 ,"author": "Aria Stewart"
 ,"dependencies": "node-xmpp"
 ,"repositories": [{"type": "git"
