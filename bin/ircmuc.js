@@ -14,24 +14,41 @@ var Channel = function() {
 r.register(MY_JID, function(stanza) {
 	 console.log("<< "+stanza.toString());
 	 if (stanza.attrs.type !== 'error') {
-		var to = new xmpp.JID(stanza.attrs.to);
-		console.log("Tag! " + stanza.attrs.to);
+		var to = new xmpp.JID(stanza.attrs.to)
+		var channelname = [to.user, to.domain]
+		var channel
 
-		if(!Channels[[to.user, to.domain]]) Channels[[to.user, to.domain]] = new Channel();
+		if(!Channels[channelname]) {
+			Channels[channelname] = new Channel();
+		}
+		channel = Channels[channelname]
 
 		if(stanza.name == 'presence') {
 			if(stanza.attrs.type =='unavailable') {
 				// Clear presence
+				delete channel.users[to.resource]
+				delete channel.by_jid[stanza.attrs.from]
 			} else {
 				// Update or add presence
-				Channels[[to.user, to.domain]].users[to.resource] = stanza.attrs.from
-				Channels[[to.user, to.domain]].by_jid[stanza.attrs.from] = to.resource
+				if(channel.users[to.resource] && channel.users[to.resource] !== stanza.attrs.from) {
+				var t = stanza.attrs.to
+				stanza.attrs.to = stanza.attrs.from
+				stanza.attrs.from = t
+				stanza.attrs.type = 'error'
+				stanza.c('error', {code: '409', type: 'cancel'}).c('conflict').c('text').t('That Nickname is already in use')
+				r.send(stanza)
+				return;
+} else {
+				channel.users[to.resource] = stanza.attrs.from
+				channel.by_jid[stanza.attrs.from] = to.resource
+}
+
 			}
 		}
 
-		stanza.attrs.from = to.user + '@' + to.domain +'/'+(Channels[[to.user, to.domain]].by_jid[stanza.attrs.from]);
-		for(var k in Channels[[to.user, to.domain]].users) {
-			stanza.attrs.to = Channels[[to.user, to.domain]].users[k]
+		stanza.attrs.from = to.user + '@' + to.domain +'/'+(channel.by_jid[stanza.attrs.from]);
+		for(var k in channel.users) {
+			stanza.attrs.to = channel.users[k]
 			console.log(">> "+stanza.toString());
 			r.send(stanza);
 		}
