@@ -3,7 +3,7 @@
 ,"main": "./lib/xmpp-muc"
 ,"description": "XMPP MUC handler"
 ,"author": "Aria Stewart"
-,"dependencies": "node-xmpp"
+,"dependencies": ["node-xmpp"]
 ,"repositories": [{"type": "git"
 		  ,"path": "git://github.com/aredridel/node-xmpp-muc.git"
 		  }]

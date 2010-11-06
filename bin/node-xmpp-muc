@@ -1,7 +1,8 @@
 var xmpp = require('node-xmpp')
-var muc = require('xmpp-muc')
+var MUC = require('xmpp-muc')
 
 var MY_JID = 'test.0x42.net'
 
 var r = new xmpp.Router(5299)
-r.register(MY_JID, muc.createMUCServer(r))
+var muc = MUC.createMUCService(r)
+r.register(MY_JID, muc.handler)
