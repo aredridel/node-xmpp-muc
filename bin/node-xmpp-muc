@@ -1,8 +1,4 @@
-var xmpp = require('node-xmpp')
-var MUC = require('xmpp-muc')
+var configure = require('../lib/xmpp-factory');
+var MUC = require('..')
 
-var MY_JID = 'test.0x42.net'
-
-var r = new xmpp.Router(5299)
-var muc = MUC.createMUCService(r)
-r.register(MY_JID, muc.handler)
+MUC.createMUCService(configure(require('../config.json')))
