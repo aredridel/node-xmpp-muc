@@ -1,18 +1,27 @@
-{ "name": "xmpp-muc"
-,"version": "0.0.0"
-,"main": "./lib/xmpp-muc"
-,"description": "XMPP MUC handler"
-,"author": "Aria Stewart"
-,"dependencies": {"node-xmpp": "*"}
-,"repositories": [{"type": "git"
-		  ,"path": "git://github.com/aredridel/node-xmpp-muc.git"
-		  }]
-,"homepage": "http://github.com/aredridel/node-xmpp-muc"
-,"bugs": "http://github.com/aredridel/node-xmpp-muc/issues"
-,"maintainers": [{"name": "Aria Stewart"
-		 ,"email": "aria.stewart@nbtsc.org"
-		 ,"web": "http://dinhe.net/~aredridel/"
-		 }]
-,"licenses": [{"type": "MIT"}]
-,"engine": "node"
+{
+  "name": "xmpp-muc",
+  "version": "0.0.0",
+  "main": "./lib/xmpp-muc",
+  "description": "XMPP MUC handler",
+  "author": "Aria Stewart <aredridel@dinhe.net>",
+  "dependencies": {
+    "node-xmpp": "*"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "path": "git://github.com/aredridel/node-xmpp-muc.git"
+    }
+  ],
+  "homepage": "http://github.com/aredridel/node-xmpp-muc",
+  "bugs": "http://github.com/aredridel/node-xmpp-muc/issues",
+  "maintainers": [
+    {
+      "name": "Aria Stewart",
+      "email": "aria.stewart@nbtsc.org",
+      "web": "http://dinhe.net/~aredridel/"
+    }
+  ],
+  "license": "MIT",
+  "engine": "node"
 }
