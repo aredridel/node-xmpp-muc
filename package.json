@@ -22,6 +22,7 @@
       "web": "http://dinhe.net/~aredridel/"
     }
   ],
+  "bin": "bin/xmpp-muc",
   "license": "MIT",
   "engine": "node"
 }

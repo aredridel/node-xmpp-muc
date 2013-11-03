@@ -1,0 +1,7 @@
+{
+    "type": "component",
+    "jid": "conference.jabberserver.example",
+    "password": "SECRET",
+    "host": "localhost",
+    "port": 5347
+}

@@ -1,4 +1,0 @@
-var configure = require('../lib/xmpp-factory');
-var MUC = require('..')
-
-MUC.createMUCService(configure(require('../config.json')))

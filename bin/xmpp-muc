@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+if (!process.argv[2] || process.argv.length > 3) {
+    console.error("Usage: " + process.argv[1] + " configfile");
+    process.exit(1);
+}
+
+var configure = require('../lib/xmpp-factory');
+var MUC = require('..');
+
+var path = require('path');
+
+MUC.createMUCService(configure(require(path.resolve(process.argv[2]))));
